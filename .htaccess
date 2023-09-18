@@ -1,0 +1,19 @@
+"hosting": {
+  "rewrites": [ {
+    "source": "**/!(*.css|*.js|*.map|*.jpg|*.gif|*.png|*.php)",
+    "destination": "/index.html"
+  } ]
+}
+
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.*)$ $1.html [L]
+
+ErrorDocument 404 https://feward.com/404
+
+Header set Connection keep-alive
+
+# https://stackoverflow.com/questions/46130632/how-can-i-implement-a-htaccess-configuration-in-firebase-hosting
+# https://stackoverflow.com/questions/16919526/how-to-link-to-pages-without-the-html-extension
+# https://stackoverflow.com/questions/19962787/rewrite-url-after-redirecting-404-error-htaccess
